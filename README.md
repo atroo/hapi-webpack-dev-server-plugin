@@ -47,7 +47,8 @@ server.start(function () {
       compiler: compiler,
       //no loginfo
       quiet: true,
-      devIndex: "./test/data"
+      //where is the index.html located
+      devIndex: "."
       /*
       ,watchDelay: 200
       ,noInfo: false
