@@ -1,0 +1,37 @@
+{
+  "name": "hapi-webpack-dev-plugin",
+  "version": "0.0.1",
+  "description": "a plugin to integrate the web-pack-dev-server as a hapi plugin into a hapi server instead of using express",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hapi",
+    "webpack",
+    "devserver",
+    "server",
+    "dev"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "chai-spies": "^0.5.1",
+    "gulp": "^3.8.10",
+    "gulp-connect": "^2.2.0",
+    "gulp-mocha": "^1.1.1",
+    "gulp-util": "^3.0.1",
+    "hapi": "8.x.x",
+    "webpack": "^1.4.12",
+    "wreck": "^5.0.1"
+  },
+  "dependencies": {
+    "boom": "^2.6.0",
+    "jquery": "^2.1.1",
+    "memory-fs": "^0.1.0",
+    "mime": "^1.2.11",
+    "socket.io": "^0.9.10",
+    "stream-cache": "0.0.2"
+  }
+}
