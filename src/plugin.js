@@ -32,7 +32,7 @@ function runPreHandlerInterceptor(req, reply) {
 		pluginUtil.beforeRequest(req, reply);
 	} catch (e) {
 		console.error("PreHandler Fault: ", e);
-		next();
+		reply(e);
 	}
 };
 
