@@ -72,12 +72,13 @@ Config Options
 	<li>devIndex - path to the dev index.html file. Is ignored if devView is configured. defaults to index.html in the cwd</li>
 	<li>devView</li>
 </ul>
-		```javascript
-		{
-			name: "the name of the view" // mandatory, elsewise the devIndex will be used
-			data: "tplData" // an object, a function which gets passed in the request, or empty - data is supposed to determine tplData for the view
-		}
-		```
+```javascript
+{
+	name: "the name of the view" // mandatory, elsewise the devIndex will be used
+	data: "tplData" // an object, a function which gets passed in the request, or empty - data is supposed to determine tplData for the view
+}
+
+```
 <ul>
 	<li>
 		quiet - turns off webpack compiler logging
