@@ -54,7 +54,6 @@ function serveMagicHtml(req, reply) {
 	try {
 		if (!pluginUtil.fileSystem.statSync(pluginUtil.getFilenameFromUrl(_path + ".js")).isFile())
 			return false;
-		console.log("served magick");
 		// Serve a page that executes the javascript
 		var res = '<!DOCTYPE html><html><head><meta charset="utf-8"/></head><body><script type="text/javascript" charset="utf-8" src="';
 		res += _path;
@@ -158,7 +157,12 @@ exports.register = function (server, opts, next) {
 			config: {
 				auth: false,
 				handler: function (req, reply) {
-					reply.file(path.join(devIndex, "index.html"));
+					if(options.devView && options.devView.name){
+						var data = typeof(options.devView.data) == "function" ? options.devView.data(req) : options.devView.data || {};
+						reply.view(options.devView.name, data);
+					}else{
+						reply.file(path.join(devIndex, "index.html"));
+					}
 				}
 			}
 		});

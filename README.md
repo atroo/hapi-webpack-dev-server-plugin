@@ -24,7 +24,7 @@ var webPackConfig = {
   },
   output: {
     path: __dirname + "/dist", //the basic build directory
-    publicPath: "/dist", //the route which the dev server listens for
+    publicPath: "/dist", //the route which the dev considers to be the directory managed by webpack
     filename: "[name].js",
     chunkFilename: "[chunkhash].[id].js"
   }
@@ -63,3 +63,29 @@ server.start(function () {
 });
 
 ```
+
+Config Options
+==============
+
+<ul>
+	<li>compiler - the webpack compiler</li>
+	<li>devIndex - path to the dev index.html file. Is ignored if devView is configured. defaults to index.html in the cwd</li>
+	<li>
+		devView
+		```javascript
+		{
+			name: "the name of the view - mandatory, elsewise the devIndex will be used",
+			data: "an object, a function which gets passed in the request, or empty - data is supposed to determine tplData for the view"
+		}
+		```
+	</li>
+	<li>
+		quiet - turns off webpack compiler logging
+	</li>
+	<li>watchDelay - determines how frequently file changes are monitored</li>
+	<li>headers - hash of headers to add to webpack-dev-server-plugin served files</li>
+</ul>
+
+
+
+
