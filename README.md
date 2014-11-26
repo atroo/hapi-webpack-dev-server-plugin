@@ -3,7 +3,9 @@ hapi-webpack-dev-server-plugin
 
 This is a plugin for hapijs providing the necessary routes to function as a webpack-dev-server for the [awesome webpack project](http://webpack.github.io/) directly in hapijs. The actual [Webpack-dev-server](https://github.com/webpack/webpack-dev-server) is implemented with express.js and since we are heavily using hapijs as our main backend framework we found it very useful to have everything right there. This avoids tweaking SOP related things just for dev purposes.
 
-As with the original webpack-dev-server, we too say: DON'T USE THIS PLUGIN IN PRODUCTION!
+As with the original webpack-dev-server, we too say: 
+
+*DON'T USE THIS PLUGIN IN PRODUCTION!*
 
 Requirements: hapijs ^8.x.x
 
