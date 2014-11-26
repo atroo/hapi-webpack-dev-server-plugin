@@ -170,51 +170,7 @@ exports.register = function (server, opts, next) {
 			config: {
 				auth: false,
 				handler: function (req, reply) {
-					var htmlView = '<!DOCTYPE html><html><head><meta charset="utf-8"/></head><body>';
-
-					try {
-						var path = pluginUtil.getFilenameFromUrl(compiler.options.output.publicPath || "/");
-						var fs = pluginUtil.fileSystem;
-
-						function writeDirectory(baseUrl, basePath) {
-							var content = fs.readdirSync(basePath);
-							htmlView += "<ul>";
-							content.forEach(function (item) {
-								var p = basePath + "/" + item;
-								if (fs.statSync(p).isFile()) {
-									htmlView += '<li><a href="';
-									htmlView += baseUrl + item;
-									htmlView += '">';
-									htmlView += item;
-									htmlView += '</a></li>';
-									if (/\.js$/.test(item)) {
-										var htmlItem = item.substr(0, item.length - 3);
-										htmlView += '<li><a href="';
-										htmlView += baseUrl + htmlItem;
-										htmlView += '">';
-										htmlView += htmlItem;
-										htmlView += '</a> (magic html for ';
-										htmlView += item;
-										htmlView += ') (<a href="';
-										htmlView += baseUrl.replace(/(^(https?:\/\/[^\/]+)?\/)/, "$1webpack-dev-server/") + htmlItem;
-										htmlView += '">webpack-dev-server</a>)</li>';
-									}
-								} else {
-									htmlView += '<li>';
-									htmlView += item;
-									htmlView += '<br>';
-									writeDirectory(baseUrl + item + "/", p);
-									htmlView += '</li>';
-								}
-							});
-							htmlView += "</ul>";
-						}
-						writeDirectory(opts.publicPath || "/", path);
-					} catch (e) {
-						console.error("Listing-Route Fault:", e);
-					}
-					htmlView += '</body></html>';
-					reply(htmlView).header("Content-Type", "text/html");
+					reply.redirect("webpack-dev-server/index.html");
 				}
 			}
 		});

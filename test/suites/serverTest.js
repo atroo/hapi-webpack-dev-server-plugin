@@ -24,12 +24,6 @@ describe("Hapi Weback-Dev Plugin Test", function () {
 
 	// <SETUP> ///////////////////////////////////////
 	beforeEach(function (done) {
-		//create a TestEntry
-		var err = fs.writeFileSync("./test/data/entry.js", "console.log('test');");
-		if (err) {
-			throw "could not reset entry.js file" + err;
-		}
-
 		server = new Hapi.Server({
 			debug: {
 				//request: ["error"]
@@ -119,7 +113,10 @@ describe("Hapi Weback-Dev Plugin Test", function () {
 
 	afterEach(function (done) {
 		server.stop(function () {
-			var err = fs.unlinkSync("./test/data/entry.js");
+			var err = fs.writeFileSync("./test/data/entry.js",'console.log("test");');
+			if(err) {
+				console-log("clean up failed");
+			}
 			done();
 		});
 	});
@@ -135,6 +132,7 @@ describe("Hapi Weback-Dev Plugin Test", function () {
 		});
 	});
 
+
 	it("should notice a change in webpack relevant files", function (done) {
 		compiler.plugin("done", function () {
 			done();
@@ -149,13 +147,13 @@ describe("Hapi Weback-Dev Plugin Test", function () {
 	it("should deliver root html", function (done) {
 		Wreck.get(url("/index.html"), function (err, res, payload) {
 			expect(res.statusCode).to.equal(200);
-			done(); 
+			done();
 		});
 	});
 
-	it("should serve the basic html page", function (done) {
+	it("should redirect to host app", function (done) {
 		Wreck.get(url("/webpack-dev-server"), function (err, res, payload) {
-			expect(res.statusCode).to.equal(200);
+			expect(res.statusCode).to.equal(302);
 			done();
 		});
 	});
