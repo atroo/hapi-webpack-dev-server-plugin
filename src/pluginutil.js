@@ -106,6 +106,10 @@ module.exports = function (options) {
 	function getFilenameFromUrl(url) {
 		// publicPrefix is the folder our bundle should be in
 		var localPrefix = compiler.options.output.publicPath || "/";
+		if(localPrefix[0] != "/"){
+			//the route always starts with a slash even when the publicPath doesnt
+			localPrefix = "/" + localPrefix;
+		}
 		if (url.indexOf(localPrefix) !== 0) {
 			if (/^(https?:)?\/\//.test(localPrefix)) {
 				localPrefix = "/" + localPrefix.replace(/^(https?:)?\/\/[^\/]+\//, "");
