@@ -9,7 +9,6 @@
 
 var fs = require("fs");
 var path = require("path");
-var StreamCache = require("stream-cache");
 var PluginUtil = require("./pluginutil");
 var mime = require("mime");
 var socketio = require("socket.io");
