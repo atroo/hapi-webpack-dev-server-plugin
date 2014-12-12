@@ -18,9 +18,6 @@ var compiler,
 	io,
 	pluginUtil,
 	pluginDevOptions,
-	livePage,
-	liveJs,
-	inlinedJs,
 	options,
 	_stats,
 	devIndex;
@@ -89,15 +86,6 @@ exports.register = function(server, opts, next) {
 			pluginUtil.close();
 		});
 
-		// Prepare live html page
-		livePage = fs.createReadStream(path.join(__dirname, "..", "client", "live.html"));
-
-		// Prepare the live js file
-		liveJs = fs.createReadStream(path.join(__dirname, "..", "client", "live.bundle.js"));
-
-		// Prepare the inlined js file
-		inlinedJs = fs.createReadStream(path.join(__dirname, "..", "client", "index.bundle.js"));
-
 		var invalidPlugin = function() {
 			if (io) io.sockets.emit("invalid");
 		}.bind(this);
@@ -117,7 +105,7 @@ exports.register = function(server, opts, next) {
 			config: {
 				auth: false,
 				handler: function(req, reply) {
-					reply(liveJs).header("Content-Type", "application/javascript");;
+					reply(fs.createReadStream(path.join(__dirname, "..", "client", "live.bundle.js"))).header("Content-Type", "application/javascript");;
 				}
 			}
 		});
@@ -128,7 +116,7 @@ exports.register = function(server, opts, next) {
 			config: {
 				auth: false,
 				handler: function(req, reply) {
-					reply(inlinedJs).header("Content-Type", "application/javascript");
+					reply(fs.createReadStream(path.join(__dirname, "..", "client", "index.bundle.js"))).header("Content-Type", "application/javascript");
 				}
 			}
 		});
@@ -140,7 +128,7 @@ exports.register = function(server, opts, next) {
 			config: {
 				auth: false,
 				handler: function(req, reply) {
-					reply(livePage).header("Content-Type", "text/html");
+					reply(fs.createReadStream(path.join(__dirname, "..", "client", "live.html"))).header("Content-Type", "text/html");
 				}
 			}
 		});
