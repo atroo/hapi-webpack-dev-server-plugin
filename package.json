@@ -31,7 +31,6 @@
     "jquery": "^2.1.1",
     "memory-fs": "^0.1.0",
     "mime": "^1.2.11",
-    "socket.io": "^0.9.10",
-    "stream-cache": "0.0.2"
+    "socket.io": "^0.9.10"
   }
 }

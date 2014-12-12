@@ -37,9 +37,9 @@ function runPreHandlerInterceptor(req, reply) {
 };
 
 function sendStats(socket, stats, force) {
-	if (!force && stats && stats.assets && stats.assets.every(function (asset) {
-		return !asset.emitted;
-	})) return;
+	if (!force && stats && stats.assets && stats.assets.every(function(asset) {
+			return !asset.emitted;
+		})) return;
 	socket.emit("hash", stats.hash);
 	if (stats.errors.length > 0)
 		socket.emit("errors", stats.errors);
@@ -71,7 +71,7 @@ function serveMagicHtml(req, reply) {
 /**
  * setup all the necessities for the plugin to work
  */
-exports.register = function (server, opts, next) {
+exports.register = function(server, opts, next) {
 	if (opts && opts.compiler) {
 
 		//general options beeing presented to the whole plugin
@@ -85,30 +85,26 @@ exports.register = function (server, opts, next) {
 		server.ext("onPreHandler", runPreHandlerInterceptor);
 
 		//if the pack halts, stop the compilers watching task
-		server.on("stop", function () {
+		server.on("stop", function() {
 			//close down the watch task of the middleware
 			pluginUtil.close();
 		});
 
 		// Prepare live html page
-		livePage = new StreamCache();
-		fs.createReadStream(path.join(__dirname, "..", "client", "live.html")).pipe(livePage);
+		livePage = fs.createReadStream(path.join(__dirname, "..", "client", "live.html"));
 
 		// Prepare the live js file
-		liveJs = new StreamCache();
-		fs.createReadStream(path.join(__dirname, "..", "client", "live.bundle.js")).pipe(liveJs);
+		liveJs = fs.createReadStream(path.join(__dirname, "..", "client", "live.bundle.js"));
 
 		// Prepare the inlined js file
-		inlinedJs = new StreamCache();
-		fs.createReadStream(path.join(__dirname, "..", "client", "index.bundle.js")).pipe(inlinedJs);
+		inlinedJs = fs.createReadStream(path.join(__dirname, "..", "client", "index.bundle.js"));
 
-
-		var invalidPlugin = function () {
+		var invalidPlugin = function() {
 			if (io) io.sockets.emit("invalid");
 		}.bind(this);
 		compiler.plugin("compile", invalidPlugin);
 		compiler.plugin("invalid", invalidPlugin);
-		compiler.plugin("done", function (stats) {
+		compiler.plugin("done", function(stats) {
 			if (!io) return;
 			sendStats(io.sockets, stats.toJson());
 			_stats = stats;
@@ -121,7 +117,7 @@ exports.register = function (server, opts, next) {
 			path: "/__webpack_dev_server__/live.bundle.js",
 			config: {
 				auth: false,
-				handler: function (req, reply) {
+				handler: function(req, reply) {
 					reply(liveJs).header("Content-Type", "application/javascript");;
 				}
 			}
@@ -132,7 +128,7 @@ exports.register = function (server, opts, next) {
 			path: "/webpack-dev-server.js",
 			config: {
 				auth: false,
-				handler: function (req, reply) {
+				handler: function(req, reply) {
 					reply(inlinedJs).header("Content-Type", "application/javascript");
 				}
 			}
@@ -144,7 +140,7 @@ exports.register = function (server, opts, next) {
 			path: "/webpack-dev-server/{anything*}",
 			config: {
 				auth: false,
-				handler: function (req, reply) {
+				handler: function(req, reply) {
 					reply(livePage).header("Content-Type", "text/html");
 				}
 			}
@@ -156,11 +152,11 @@ exports.register = function (server, opts, next) {
 			path: "/index.html",
 			config: {
 				auth: false,
-				handler: function (req, reply) {
-					if(options.devView && options.devView.name){
+				handler: function(req, reply) {
+					if (options.devView && options.devView.name) {
 						var data = typeof(options.devView.data) == "function" ? options.devView.data(req) : options.devView.data || {};
 						reply.view(options.devView.name, data);
-					}else{
+					} else {
 						reply.file(path.join(devIndex, "index.html"));
 					}
 				}
@@ -173,18 +169,18 @@ exports.register = function (server, opts, next) {
 			path: "/webpack-dev-server",
 			config: {
 				auth: false,
-				handler: function (req, reply) {
+				handler: function(req, reply) {
 					reply.redirect("webpack-dev-server/index.html");
 				}
 			}
 		});
 
 		//register socketio to listen to any server in the pack
-		server.connections.forEach(function (srv) {
+		server.connections.forEach(function(srv) {
 			io = socketio.listen(srv.listener, {
 				"log level": 1
 			});
-			io.sockets.on("connection", function (socket) {
+			io.sockets.on("connection", function(socket) {
 				if (!_stats) return;
 				sendStats(socket, _stats.toJson(), true);
 			}.bind(this));
