@@ -1,6 +1,6 @@
 {
   "name": "hapi-webpack-dev-plugin",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "a plugin to integrate the web-pack-dev-server as a hapi plugin into a hapi server instead of using express",
   "main": "src/plugin.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "jquery": "^2.1.1",
     "memory-fs": "^0.1.0",
     "mime": "^1.2.11",
-    "socket.io": "^0.9.10",
-    "stream-cache": "0.0.2"
+    "socket.io": "^0.9.10"
   }
 }
