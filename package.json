@@ -13,7 +13,7 @@
     "server",
     "dev"
   ],
-  "author": "",
+  "author": "atroo (info@atroo.de)",
   "license": "ISC",
   "devDependencies": {
     "chai": "^1.9.2",
