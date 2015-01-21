@@ -9,7 +9,7 @@ Just like the original webpack-dev-server we also want to give out a quick warni
 
 Requirements: hapijs ^8.x.x
 
-State: In Progress
+State: In Progress (meaning not hot code replacement at the moment, but auto relaoding works just fine)
 
 Basic Usage
 =====
