@@ -1,6 +1,6 @@
 {
   "name": "hapi-webpack-dev-plugin",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "a plugin to integrate the web-pack-dev-server as a hapi plugin into a hapi server instead of using express",
   "main": "src/plugin.js",
   "scripts": {
@@ -14,6 +14,10 @@
     "dev"
   ],
   "author": "atroo (info@atroo.de)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atroo/hapi-webpack-dev-server-plugin"
+  },
   "license": "ISC",
   "devDependencies": {
     "chai": "^1.9.2",
