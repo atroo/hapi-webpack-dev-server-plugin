@@ -14,25 +14,30 @@ State: In Progress (meaning not hot code replacement at the moment, but auto rel
 Basic Usage
 =====
 
+we tend to structure our apps like
+```javascript
+- server_plugin
+    index.js
+- webpack_frontend
+    - src
+        main.js
+    webpack.config.js
+server.js
+```
+
+with that structure in mind you'd setup the dev-server-plugin in the server.js as follows
+
 ```javascript
 var Webpack = require('webpack');
 var Hapi = require('hapi');
 
 //basic webpack config, see webpack api docs for all options
-var webPackConfig = {
-  cache: true,
-  devtool: "eval",
-  debug: true,
-  entry: {
-    entry: "./dist/entry.js"
-  },
-  output: {
-    path: __dirname + "/dist", //the basic build directory
-    publicPath: "/dist", //the route which the dev considers to be the directory managed by webpack
-    filename: "[name].js",
-    chunkFilename: "[chunkhash].[id].js"
-  }
+var webpackConf = require('./webpack_frontend/webpack.config.js');
+webpackConf.entry = {
+    app: './webpack_frontend/src/main.js' //this is needed to have the correct relative paths for the webpack compiler which now runs from the base dir rather than from webpack_frontend
 };
+webpackConf.devtool = 'source-map';
+
 //create the webpack compiler
 compiler = Webpack(webPackConfig);
 
@@ -46,13 +51,22 @@ server.connection({
 //start server and register dev server as plugin
 server.start(function () {
   server.register({
-    register: require('./src/plugin'),
+    register: require('hapi-webpack-dev-plugin'),
     options: {
       compiler: compiler,
       //no loginfo
       quiet: true,
       //where is the index.html located
-      devIndex: "."
+      devIndex: ".", //mot needed if devView is configured
+      devView: { //allows to configure a view with whatever engine hapi has been configured to induce e.e. session information on startup
+            name: 'main.html',
+            data: function (request) {
+                var tplData = {
+                    "entrypoint": "dist/app.js"
+                };
+                return tplData;
+            }
+        }
       /*
       ,watchDelay: 200
       ,noInfo: false
@@ -91,6 +105,9 @@ Config Options
 	<li>headers - hash of headers to add to webpack-dev-server-plugin served files</li>
 </ul>
 
+Questions
+==============
 
+Feel free to ask questions if anything is badly described!
 
 
