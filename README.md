@@ -57,7 +57,7 @@ server.start(function () {
       //no loginfo
       quiet: true,
       //where is the index.html located
-      devIndex: ".", //mot needed if devView is configured
+      devIndex: ".", //not needed if devView is configured
       devView: { //allows to configure a view with whatever engine hapi has been configured to induce e.e. session information on startup
             name: 'main.html',
             data: function (request) {
@@ -105,9 +105,11 @@ Config Options
 	<li>headers - hash of headers to add to webpack-dev-server-plugin served files</li>
 </ul>
 
-Questions
+Questions?
 ==============
 
 Feel free to ask questions if anything is badly described!
+
+info@atroo.de or an Issue!
 
 
