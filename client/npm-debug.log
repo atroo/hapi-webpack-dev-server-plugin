@@ -1,0 +1,90 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Programmierung\\tools\\nodejs\\\\node.exe',
+1 verbose cli   'D:\\Programmierung\\tools\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'jade-laoder' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose node symlink D:\Programmierung\tools\nodejs\\node.exe
+5 warn package.json webpackdevserverclient@1.0.0 No description
+6 warn package.json webpackdevserverclient@1.0.0 No repository field.
+7 warn package.json webpackdevserverclient@1.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'jade-laoder', null ]
+10 verbose cache add name=undefined spec="jade-laoder" args=["jade-laoder",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'jade-laoder',
+11 verbose parsed url   path: 'jade-laoder',
+11 verbose parsed url   href: 'jade-laoder' }
+12 silly lockFile e7e97227-jade-laoder jade-laoder
+13 verbose lock jade-laoder C:\Users\Robert\AppData\Roaming\npm-cache\e7e97227-jade-laoder.lock
+14 silly lockFile e7e97227-jade-laoder jade-laoder
+15 silly lockFile e7e97227-jade-laoder jade-laoder
+16 verbose addNamed [ 'jade-laoder', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile 7f984613-jade-laoder jade-laoder@
+19 verbose lock jade-laoder@ C:\Users\Robert\AppData\Roaming\npm-cache\7f984613-jade-laoder.lock
+20 silly addNameRange { name: 'jade-laoder', range: '*', hasData: false }
+21 verbose request where is /jade-laoder
+22 verbose request registry https://registry.npmjs.org/
+23 verbose request id 6fbdd129f65d35eb
+24 verbose url raw /jade-laoder
+25 verbose url resolving [ 'https://registry.npmjs.org/', './jade-laoder' ]
+26 verbose url resolved https://registry.npmjs.org/jade-laoder
+27 verbose request where is https://registry.npmjs.org/jade-laoder
+28 info trying registry request attempt 1 at 16:54:11
+29 http GET https://registry.npmjs.org/jade-laoder
+30 http 404 https://registry.npmjs.org/jade-laoder
+31 verbose headers { date: 'Wed, 04 Feb 2015 15:54:10 GMT',
+31 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+31 verbose headers   'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=0',
+31 verbose headers   'content-length': '52',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   'x-served-by': 'cache-lcy1134-LCY',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1423065249.972725,VS0,VE159',
+31 verbose headers   'keep-alive': 'timeout=10, max=50',
+31 verbose headers   connection: 'Keep-Alive' }
+32 silly registry.get cb [ 404,
+32 silly registry.get   { date: 'Wed, 04 Feb 2015 15:54:10 GMT',
+32 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+32 silly registry.get     'content-type': 'application/json',
+32 silly registry.get     'cache-control': 'max-age=0',
+32 silly registry.get     'content-length': '52',
+32 silly registry.get     'accept-ranges': 'bytes',
+32 silly registry.get     via: '1.1 varnish',
+32 silly registry.get     'x-served-by': 'cache-lcy1134-LCY',
+32 silly registry.get     'x-cache': 'MISS',
+32 silly registry.get     'x-cache-hits': '0',
+32 silly registry.get     'x-timer': 'S1423065249.972725,VS0,VE159',
+32 silly registry.get     'keep-alive': 'timeout=10, max=50',
+32 silly registry.get     connection: 'Keep-Alive' } ]
+33 silly lockFile 7f984613-jade-laoder jade-laoder@
+34 silly lockFile 7f984613-jade-laoder jade-laoder@
+35 error 404 404 Not Found: jade-laoder
+35 error 404
+35 error 404 'jade-laoder' is not in the npm registry.
+35 error 404 You should bug the author to publish it
+35 error 404 It was specified as a dependency of 'webpackdevserverclient'
+35 error 404
+35 error 404 Note that you can also install from a
+35 error 404 tarball, folder, or http url, or git url.
+36 error System Windows_NT 6.2.9200
+37 error command "D:\\Programmierung\\tools\\nodejs\\\\node.exe" "D:\\Programmierung\\tools\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save-dev" "jade-laoder"
+38 error cwd D:\Programmierung\workspaces\brackets\hapi-webpack-dev-server-plugin\client\new
+39 error node -v v0.10.35
+40 error npm -v 1.4.28
+41 error code E404
+42 verbose exit [ 1, true ]
