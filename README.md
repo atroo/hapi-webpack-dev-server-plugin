@@ -7,8 +7,8 @@ Just like the original webpack-dev-server we also want to give out a quick warni
 
 *DON'T USE THIS PLUGIN IN PRODUCTION!*
 
-*>= v1.1.2 -> Requirements: hapijs ^14.x.x*
-*<= v1.1.2 -> Requirements: hapijs ^8.x.x*
+## >= v1.1.2 -> Requirements: hapijs ^14.x.x
+## <  v1.1.2 -> Requirements: hapijs ^8.x.x
 
 State: In Progress (meaning not hot code replacement at the moment, but auto relaoding works just fine)
 
