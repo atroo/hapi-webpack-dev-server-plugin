@@ -78,7 +78,7 @@ exports.register = function (server, opts, next) {
 
 		pluginUtil = PluginUtil(opts);
 		server.ext({
-			type: "onPreResponse",
+			type: "onRequest",
 			method: runPreHandlerInterceptor
 		});
 
