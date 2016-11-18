@@ -148,8 +148,9 @@ exports.register = function (server, opts, next) {
 				}
 			},
 			config: {
-				auth: false
-
+				auth: {
+					mode: 'try'
+				}
 			}
 		});
 

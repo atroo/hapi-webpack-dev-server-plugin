@@ -20,7 +20,7 @@
   },
   "license": "ISC",
 	"peerDependencies": {
-		"hapi": "^14.0.0"
+		"hapi": ">=14.x.x"
 	},
   "devDependencies": {
     "chai": "^1.9.2",
