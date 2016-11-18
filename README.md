@@ -7,6 +7,7 @@ Just like the original webpack-dev-server we also want to give out a quick warni
 
 *DON'T USE THIS PLUGIN IN PRODUCTION!*
 
+## >= v1.2.0 -> Requirements: hapijs >=14.x.x
 ## >= v1.1.2 -> Requirements: hapijs ^14.x.x
 ## <  v1.1.2 -> Requirements: hapijs ^8.x.x
 
